@@ -1,35 +1,45 @@
-import React, { ReactNode } from 'react';
-import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/react';
+import { useState } from 'react';
 import Sidebar from './Sidebar';
-import TopHeader from './TopHeader';
-import styles from '@/styles/components/DashboardLayout.module.scss';
+import Topbar from './TopHeader';
+import LoadingDots from '../atoms/LoadingDots';
+import Head from 'next/head';
 
-interface Props {
-  children: ReactNode;
+interface DashboardLayoutProps {
+  title?: string; 
+  children: React.ReactNode; 
 }
 
-const DashboardLayout = ({ children }: Props) => {
-  const [isSidebarOpen, setIsSidebarOpen] = React.useState(true);
-  const { data: session } = useSession();
-  const router = useRouter();
+const DashboardLayout: React.FC<DashboardLayoutProps> = ({ title, children }) => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+  const simulateLoading = () => {
+    setIsLoading(true);
+    setTimeout(() => setIsLoading(false), 2000);
   };
 
+  const pageTitle = title ? `TLMS - ${title}` : 'TLMS'; 
+
   return (
-    <div className={styles.dashboardLayout}>
-      <Sidebar isOpen={isSidebarOpen} />
-      <div className={`${styles.mainContent} ${!isSidebarOpen ? styles.expanded : ''}`}>
-        <TopHeader 
-          toggleSidebar={toggleSidebar} 
-          user={session?.user}
-          isSidebarOpen={isSidebarOpen}
-        />
-        <main className={styles.pageContent}>
-          {children}
-        </main>
+    <div className="dashboard-layout">
+      <Head>
+        <title>{pageTitle}</title>
+      </Head>
+      <Sidebar 
+        isOpen={isSidebarOpen} 
+        onClose={() => setIsSidebarOpen(false)} 
+      />
+      <div className="main-wrapper">
+        <Topbar onMenuClick={() => setIsSidebarOpen(true)} />
+        {isLoading ? (
+          <div className="loading-overlay">
+            <LoadingDots />
+          </div>
+        ) : (
+          <main className="main-content">
+            {children}
+          </main>
+        )}
       </div>
     </div>
   );

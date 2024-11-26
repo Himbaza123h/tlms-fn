@@ -3,38 +3,44 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 class MyDocument extends Document {
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
-        <title>TLMS-</title>
-          {/* Google Fonts link */}
+          {/* Favicon links */}
           <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-            rel="stylesheet"
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/favicons/apple-touch-icon.png"
           />
-          {/* Custom body font */}
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicons/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicons/favicon-16x16.png"
+          />
+          <link rel="manifest" href="/favicons/site.webmanifest" />
+
+          {/* Custom scrollbar styling */}
           <style>{`
-          ::-webkit-scrollbar-thumb:hover {
-            background: #bcbcbc; /* Darker gray color when hovered */
-            }
-
-
-            /* For WebKit-based browsers */
+            /* Scrollbar styling */
             ::-webkit-scrollbar {
-            width: 6px !important; /* Thin scrollbar */
+              width: 6px;
             }
-
             ::-webkit-scrollbar-track {
-            background: #f0f2f5 !important; /* Gray background for the track */
-            border-radius: 7px !important; /* Rounded track */
+              background: #f0f2f5;
+              border-radius: 7px;
             }
-
             ::-webkit-scrollbar-thumb {
-            background: rgb(169, 169, 169) !important; /* Gray thumb */
-            border-radius: 7px !important; /* Rounded thumb */
+              background: rgb(169, 169, 169);
+              border-radius: 7px;
             }
-
-            body {
-              font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            ::-webkit-scrollbar-thumb:hover {
+              background: #bcbcbc;
             }
           `}</style>
         </Head>

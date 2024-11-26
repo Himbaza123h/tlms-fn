@@ -9,6 +9,8 @@ import logo from '../public/logo.png';
 import heroImage from '../public/truck-logistics.jpg';
 import googleImage from '../public/google.png';
 import LoadingDots from '../components/atoms/LoadingDots';
+import { toast } from 'react-toastify';
+import Footer from '@/components/layouts/Footer';
 
 const Header = () => {
   const { data: session, status } = useSession();
@@ -20,15 +22,21 @@ const Header = () => {
     try {
       const result = await signIn('google', {
         redirect: false,
-        callbackUrl: '/dashboard'
+        callbackUrl: '/dashboard',
       });
+  
       if (result?.error) {
         console.error('Sign in error:', result.error);
+      } else {
+        toast.success('Login in progress, you are bieng redirected ..');
       }
     } catch (error) {
       console.error('Sign in error:', error);
+    } finally {
+      setIsLoading(false); 
     }
   };
+  
 
   const handleSignOut = async () => {
     setIsLoading(true);
@@ -42,6 +50,8 @@ const Header = () => {
     }
   };
 
+
+  
   // Redirect to dashboard if already authenticated
   React.useEffect(() => {
     if (status === 'authenticated' && router.pathname === '/') {
@@ -97,7 +107,7 @@ const Header = () => {
             <p className={styles.heroDescription}>
               Streamline your transportation operations with our comprehensive logistics management solution. Optimize routes, track fleet performance, and enhance efficiency across your entire trucking ecosystem.
             </p>
-            <Link href="/get-started" className={styles.heroCTA}>
+            <Link href="" className={styles.heroCTA}>
               Get Started
             </Link>
           </div>
@@ -112,6 +122,8 @@ const Header = () => {
           </div>
         </section>
       )}
+
+      <Footer />
     </>
   );
 };
