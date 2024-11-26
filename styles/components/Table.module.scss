@@ -1,0 +1,185 @@
+@import '../../styles/variables.scss';
+
+.tableContainer {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border-radius: $radius-md;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background-color: white;
+  margin-bottom: 2rem;
+
+  @media screen and (max-width: 768px) {
+    border-radius: $radius-sm;
+    margin-bottom: 1rem;
+  }
+
+  // Custom scrollbar styles
+  &::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $primary-dark;
+    border-radius: 4px;
+
+    &:hover {
+      background: darken($primary-dark, 10%);
+    }
+  }
+
+  // Firefox scrollbar
+  scrollbar-width: thin;
+  scrollbar-color: $primary-dark #f1f1f1;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse; // Changed from separate to collapse
+  table-layout: auto; // Allow natural column sizing
+  
+  thead {
+    tr {
+      th {
+        padding: 1rem;
+        text-align: left;
+        font-weight: 600;
+        color: white;
+        background-color: $primary-dark;
+        border-bottom: 1px solid $color-border;
+        white-space: nowrap;
+        
+        // Remove fixed width constraints
+        width: auto;
+        
+        &:first-child {
+          // Optional: Give first column a minimum width if needed
+          min-width: 150px;
+        }
+
+        @media screen and (max-width: 768px) {
+          padding: 0.75rem;
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        padding: 1rem;
+        border-bottom: 1px solid $color-border;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        // Remove fixed width constraints
+        width: auto;
+
+        @media screen and (max-width: 768px) {
+          padding: 0.75rem;
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+}
+
+
+.tableControls {
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  .searchInput {
+    width: 30%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: $radius-sm;
+    transition: all 0.2s ease;
+
+    @media screen and (max-width: 1024px) {
+      width: 50%;
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $primary-dark;
+      box-shadow: 0 0 0 2px rgba($primary-dark, 0.1);
+    }
+  }
+}
+
+.sortableHeader {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .sortIndicator {
+    display: inline-block;
+    margin-left: 0.5rem;
+    transition: transform 0.2s ease;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem;
+  
+  @media screen and (max-width: 768px) {
+    padding: 0.75rem;
+    gap: 0.25rem;
+  }
+  
+  .pageButton {
+    min-width: 2.5rem;
+    height: 2.5rem;
+    padding: 0 0.75rem;
+    border: 1px solid #ddd;
+    background-color: white;
+    cursor: pointer;
+    border-radius: $radius-sm;
+    transition: all 0.2s ease;
+    
+    @media screen and (max-width: 768px) {
+      min-width: 2rem;
+      height: 2rem;
+      padding: 0 0.5rem;
+      font-size: 0.875rem;
+    }
+    
+    &:hover {
+      background-color: $color-hover-light;
+      border-color: $primary-dark;
+    }
+    
+    &.activePage {
+      background-color: $primary-dark;
+      color: white;
+      border-color: $primary-dark;
+    }
+    
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba($primary-dark, 0.2);
+    }
+  }
+}

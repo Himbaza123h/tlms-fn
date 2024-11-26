@@ -1,271 +1,128 @@
-// styles/components/DashboardLayout.module.scss
-.dashboardLayout {
-    display: flex;
-    min-height: 100vh;
-    background-color: #f8f9fa;
+// Updated Variables with Minimal Color Palette
+$primary: #1a237e;
+$secondary: #334155;
+$background: #f8fafc;
+$text-primary: #1e293b;
+$text-secondary: #64748b;
+$border-color: #e2e8f0;
+$font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+
+// Layout Variables
+$sidebar-width: 280px;
+$sidebar-width-collapsed: 80px;
+$topbar-height: 72px;
+
+// Mixins and Utility Classes
+@mixin smooth-transition {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+@mixin shadow-subtle {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
   }
+}
+.dashboard-layout {
+  width: 100%;
+  display: flex;
   
-  .mainContent {
-    flex: 1;
-    margin-left: 240px;
-    transition: margin-left 0.3s ease;
-    
-    &.expanded {
-      margin-left: 64px;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: $font-family;
+  background-color: $background;
+  
+  // Main Wrapper with Sidebar Responsiveness
+  .main-wrapper {
+    // flex-grow: 1;
+    margin-left: $sidebar-width;
+    @include smooth-transition;
+
+    &.sidebar-closed {
+      margin-left: $sidebar-width-collapsed;
+    }
+
+    @include mobile {
+      margin-left: 0;
     }
   }
-  
-  .pageContent {
-    padding: 2rem;
-  }
-  
-  // styles/components/Sidebar.module.scss
-  .sidebar {
-    width: 240px;
-    height: 100vh;
-    background: #fff;
-    position: fixed;
-    left: 0;
-    top: 0;
-    border-right: 1px solid #e9ecef;
-    transition: all 0.3s ease;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    
-    &.collapsed {
-      width: 64px;
-      
-      .title {
-        display: none;
+
+  // Main Content Area
+  .main-content {
+    padding: 3rem;
+    width: 100%; 
+    margin: 0 auto;
+
+    @media (max-width: 763px) {
+        padding: 4px;
+        width: 100%;
+    }
+
+    .content-wrapper {
+      background-color: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      @include shadow-subtle;
+      min-height: calc(100vh - #{$topbar-height} - 3rem);
+      @media (max-width: 763px) {
+          padding: 4px;
+          width: 100%;
       }
-      
-      .logo img {
-        width: 32px;
-      }
     }
   }
-  
-  .logoContainer {
-    height: 64px;
-    padding: 0.75rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 1px solid #e9ecef;
-  }
-  
-  .logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .navigation {
-    padding: 1rem 0;
-    overflow-y: auto;
-  }
-  
-  .navItem {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem 1rem;
-    color: #495057;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    
-    &:hover {
-      background: #f8f9fa;
-      color: #4a90e2;
-    }
-    
-    &.active {
-      background: #e9ecef;
-      color: #4a90e2;
-      border-right: 3px solid #4a90e2;
+}
+
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+// Responsive Adjustments
+@include mobile {
+  .dashboard-layout {
+    .main-wrapper {
+      margin-left: 0;
     }
   }
+}
+
+// Scrollbar Styling
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: lighten($background, 3%);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $secondary;
+  border-radius: 10px;
   
-  .icon {
-    margin-right: 1rem;
-    display: flex;
-    align-items: center;
+  &:hover {
+    background: darken($secondary, 10%);
   }
-  
-  .title {
-    font-size: 0.9rem;
-    font-weight: 500;
-  }
-  
-  // styles/components/TopHeader.module.scss
-  .topHeader {
-    height: 64px;
-    background: #fff;
-    border-bottom: 1px solid #e9ecef;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.5rem;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-  }
-  
-  .leftSection {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .menuButton {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 4px;
-    
-    &:hover {
-      background: #f8f9fa;
-    }
-  }
-  
-  .searchBar {
-    position: relative;
-    width: 300px;
-    
-    @media (max-width: 768px) {
-      display: none;
-    }
-  }
-  
-  .searchIcon {
-    position: absolute;
-    left: 0.75rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #6c757d;
-  }
-  
-  .searchInput {
-    width: 100%;
-    padding: 0.5rem 1rem 0.5rem 2.5rem;
-    border: 1px solid #e9ecef;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    
-    &:focus {
-      outline: none;
-      border-color: #4a90e2;
-    }
-  }
-  
-  .rightSection {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .notificationButton {
-    position: relative;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 4px;
-    
-    &:hover {
-      background: #f8f9fa;
-    }
-  }
-  
-  .badge {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: #dc3545;
-    color: #fff;
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 999px;
-    min-width: 1rem;
-    height: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .profileDropdown {
-    position: relative;
-  }
-  
-  .profileButton {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 4px;
-    
-    &:hover {
-      background: #f8f9fa;
-    }
-  }
-  
-  .avatar {
-    border-radius: 50%;
-  }
-  
-  .avatarPlaceholder {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #4a90e2;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 500;
-  }
-  
-  .userName {
-    font-weight: 500;
-    
-    @media (max-width: 768px) {
-      display: none;
-    }
-  }
-  
-  .dropdownMenu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: #fff;
-    border: 1px solid #e9ecef;
-    border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    min-width: 200px;
-    margin-top: 0.5rem;
-  }
-  
-  .dropdownItem {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: none;
-    background: none;
-    cursor: pointer;
-    text-align: left;
-    
-    &:hover {
-      background: #f8f9fa;
-    }
-    
-    &.logoutItem {
-      border-top: 1px solid #e9ecef;
-      color: #dcd;
-    }
+}
+
+// Subtle Animations
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.main-content {
+  animation: fadeIn 0.5s ease-out;
 }
