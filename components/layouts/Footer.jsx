@@ -1,9 +1,8 @@
 import React from 'react';
 import { 
   LinkedinIcon, 
-  TwitterIcon, 
   GithubIcon, 
-  InstagramIcon 
+  InstagramIcon,
 } from 'lucide-react';
 import styles from '../../styles/components/Footer.module.scss';
 
@@ -38,10 +37,9 @@ const Footer = () => {
             </div>
             <div className={styles.footerBottom}>
                 <div className={styles.socialIcons}>
-                    <a href="#linkedin" aria-label="LinkedIn"><LinkedinIcon /></a>
-                    <a href="#twitter" aria-label="Twitter"><TwitterIcon /></a>
-                    <a href="#github" aria-label="GitHub"><GithubIcon /></a>
-                    <a href="#instagram" aria-label="Instagram"><InstagramIcon /></a>
+                    <a href="https://www.linkedin.com/in/alainhonore/" aria-label="LinkedIn"><LinkedinIcon /></a>
+                    <a href="https://github.com/Himbaza123h" aria-label="GitHub"><GithubIcon /></a>
+                    <a href="https://www.instagram.com/alain_honore1_official/" aria-label="Instagram"><InstagramIcon /></a>
                 </div>
                 <div className={styles.links}>
                     &copy; {new Date().getFullYear()} Alain Honore. All rights reserved.

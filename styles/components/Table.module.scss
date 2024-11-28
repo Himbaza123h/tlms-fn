@@ -6,7 +6,7 @@
   overflow-x: auto;
   border-radius: $radius-md;
   border: 1px solid rgba(0, 0, 0, 0.12);
-  background-color: white;
+  background-color: $bg-primary;
   margin-bottom: 2rem;
 
   @media screen and (max-width: 768px) {
@@ -41,8 +41,8 @@
 
 .table {
   width: 100%;
-  border-collapse: collapse; // Changed from separate to collapse
-  table-layout: auto; // Allow natural column sizing
+  border-collapse: collapse; 
+  table-layout: auto; 
   
   thead {
     tr {
@@ -55,11 +55,9 @@
         border-bottom: 1px solid $color-border;
         white-space: nowrap;
         
-        // Remove fixed width constraints
         width: auto;
         
         &:first-child {
-          // Optional: Give first column a minimum width if needed
           min-width: 150px;
         }
 
