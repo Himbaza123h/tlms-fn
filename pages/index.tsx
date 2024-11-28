@@ -11,6 +11,7 @@ import googleImage from '../public/google.png';
 import LoadingDots from '../components/atoms/LoadingDots';
 import { toast } from 'react-toastify';
 import Footer from '@/components/layouts/Footer';
+import { LayoutDashboardIcon } from 'lucide-react';
 
 const Header = () => {
   const { data: session, status } = useSession();
@@ -38,25 +39,11 @@ const Header = () => {
   };
   
 
-  const handleSignOut = async () => {
-    setIsLoading(true);
-    try {
-      await signOut({ redirect: false });
-      router.push('/');
-    } catch (error) {
-      console.error('Sign out error:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
 
   
   // Redirect to dashboard if already authenticated
   React.useEffect(() => {
-    if (status === 'authenticated' && router.pathname === '/') {
-      router.push('/dashboard');
-    }
   }, [status, router]);
 
   return (
@@ -75,11 +62,12 @@ const Header = () => {
         <div className={styles.authContainer}>
           {session ? (
             <button 
-              className={styles.authButton} 
-              onClick={handleSignOut}
-            >
-              Logout
-            </button>
+            className={styles.authButton} 
+            onClick={() => (window.location.href = '/dashboard')}
+          >
+            <LayoutDashboardIcon />
+            Dashboard
+          </button>
           ) : (
             <button 
               className={styles.authButton} 
@@ -98,7 +86,7 @@ const Header = () => {
         </div>
       </header>
 
-      {!session && (
+      {/* {!session && ( */}
         <section className={styles.heroSection}>
           <div className={styles.heroContent}>
             <h1 className={styles.heroTitle}>
@@ -121,7 +109,7 @@ const Header = () => {
             />
           </div>
         </section>
-      )}
+      {/* )} */} 
 
       <Footer />
     </>

@@ -1,5 +1,30 @@
 {
-  "trucks": [],
-  "drivers": [],
-  "orders": []
+  "trucks": [
+    {
+      "id": "6616",
+      "plateNumber": "4528398393",
+      "capacity": 15,
+      "model": "Toyota",
+      "year": 2019,
+      "status": "Available"
+    }
+  ],
+  "drivers": [
+    {
+      "name": "Alain Honore",
+      "license_number": "24387383748",
+      "contact_number": "0782179022",
+      "assigned_truck": "6616",
+      "id": "de6d"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ecbe",
+      "customer_name": "Baxter Massey",
+      "assigned_truck": "6616",
+      "assigned_driver": "de6d",
+      "order_status": "Completed"
+    }
+  ]
 }
