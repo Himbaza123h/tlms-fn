@@ -84,7 +84,6 @@ GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
 NEXTAUTH_SECRET=your-nextauth-secret
 NEXTAUTH_URL=http://localhost:3000
-NEXT_PUBLIC_API_BASE_URL=http://localhost:5000
 ```
 
 Make sure to replace the placeholder values with your actual credentials.
