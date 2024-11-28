@@ -1,19 +1,9 @@
 @import '../variables.scss';
 
-// Color Palette
-$primary-color: #2563eb; // Deep blue
-$accent-color: #3b82f6; // Bright blue
-$text-primary: #1f2937; // Dark gray
-$text-secondary: #4b5563; // Medium gray
-$background-color: #ffffff;
-$shadow-color: rgba(0, 0, 0, 0.12);
-
-$primary-dark: #2980b9;
-
 .breadcrumbs {
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, $background-color, $background-color);
+  background: linear-gradient(135deg, $bg-primary, $bg-primary);
   padding: 15px 18px; 
   border-radius: 10px;
   border: 1px solid $shadow-color; 
@@ -23,6 +13,10 @@ $primary-dark: #2980b9;
   position: relative;
   overflow: hidden;
   transition: all 0.4s ease;
+
+  @media (max-width: 763px) {
+    margin-top: 1rem;
+}
 
   &::before {
     content: '';
@@ -53,7 +47,7 @@ $primary-dark: #2980b9;
       transform: translateY(-50%);
       height: 20px;
       width: 1px;
-      background-color: rgba($background-color, 0.2);
+      background-color: rgba($bg-primary, 0.2);
     }
 
     @media (max-width: 763px) {

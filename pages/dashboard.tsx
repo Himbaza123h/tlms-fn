@@ -82,7 +82,7 @@ const Dashboard = () => {
               <h3>Available Trucks</h3>
               <p className={styles.stat}>{AvailableTrucksCount}</p>
             </div>
-            <div className={styles.statsCard}>
+            <div className={styles.statsCard}> 
               <h3>Active Drivers</h3>
               <p className={styles.stat}>{driversList.length}</p>
             </div>
