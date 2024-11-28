@@ -1,18 +1,3 @@
-// Updated Variables with Minimal Color Palette
-$primary: #1a237e;
-$secondary: #334155;
-$background: #f8fafc;
-$text-primary: #1e293b;
-$text-secondary: #64748b;
-$border-color: #e2e8f0;
-$font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-
-// Layout Variables
-$sidebar-width: 280px;
-$sidebar-width-collapsed: 80px;
-$topbar-height: 72px;
-
-// Mixins and Utility Classes
 @mixin smooth-transition {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -35,7 +20,6 @@ $topbar-height: 72px;
   font-family: $font-family;
   background-color: $background;
   
-  // Main Wrapper with Sidebar Responsiveness
   .main-wrapper {
     // flex-grow: 1;
     margin-left: $sidebar-width;
@@ -57,7 +41,7 @@ $topbar-height: 72px;
     margin: 0 auto;
 
     @media (max-width: 763px) {
-        padding: 4px;
+        padding: 8px;
         width: 100%;
     }
 

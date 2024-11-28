@@ -4,6 +4,10 @@
     align-items: center;
     width: 100%; 
     margin-bottom: 12px;
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
   }
 
 
