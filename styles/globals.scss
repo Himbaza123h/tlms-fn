@@ -1,3 +1,18 @@
-@import './variables';
+@import 'variables'; 
+
+// Reset and base styles
+@import 'components/reset';
+// @import 'typography';
+
+// Layout components
+@import 'components/DashboardLayout.module.scss';
+
+// Components
+@import 'components/Sidebar.module.scss';
+@import 'components/TopHeader.module.scss';
+
+// Utilities
+// @import 'utilities/animations';
+// @import 'utilities/helpers';
 
 

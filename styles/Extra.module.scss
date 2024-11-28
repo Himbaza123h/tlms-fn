@@ -1,0 +1,32 @@
+.Headeractions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+    margin-bottom: 12px;
+  }
+
+
+  .formGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  
+    // For smaller screens, one column
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  
+    // Make the field span both columns
+    .form-full-width {
+      grid-column: span 2;
+    }
+
+    .errorMessage {
+      color: red;
+      font-size: 12px;
+      margin-top: 4px;
+
+    }    
+  }
+  

@@ -1,0 +1,109 @@
+.truckDetailContainer {
+  padding: 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.truckInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.label {
+  font-weight: 600;
+  color: #333;
+}
+
+.status {
+  font-weight: 700;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-weight: 600;
+    color: #333;
+  }
+
+  input {
+    padding: 0.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    transition: border-color 0.15s ease-in-out;
+
+    &:focus {
+      outline: none;
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.2);
+    }
+  }
+
+  /* Styling for select input */
+  select {
+    padding: 0.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    background-color: #ffffff;
+    appearance: none; /* Removes default dropdown arrow */
+    cursor: pointer;
+    transition: border-color 0.15s ease-in-out;
+
+    &:focus {
+      outline: none;
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.2);
+    }
+
+    &::-ms-expand {
+      display: none; 
+    }
+
+    &::after {
+      content: '▼';
+      position: absolute;
+      right: 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.25rem;
+      color: #4f46e5;
+    }
+  }
+}
+
+.buttonGroup {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}

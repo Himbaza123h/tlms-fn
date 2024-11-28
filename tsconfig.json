@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/layouts/TopHeader.tsx", "pages/trucks/index.jsx", "pages/dashboard.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/layouts/TopHeader.jsx", "pages/trucks/index.jsx", "pages/dashboard.tsx", "components/layouts/DashboardLayout.tsx", "components/layouts/Sidebar.jsx", "components/molecules/TableRow.tsx", "components/atoms/Breadcrumbs.jsx", "pages/dashboard/orders/index.tsx", "components/atoms/Button.tsx", "pages/dashboard/trucks/create.tsx", "components/molecules/FormField.tsx", "components/layouts/Footer.jsx"],
   "exclude": ["node_modules"]
 }
